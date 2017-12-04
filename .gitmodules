@@ -1,0 +1,8 @@
+[submodule "public"]
+	path = public
+	url = git@xiaoshatong:memoex/memoex.github.io.git
+	branch = master
+[submodule "themes/blue"]
+	path = themes/blue
+	url = git@xiaoshatong:memoex/blue.git
+	branch = master

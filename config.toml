@@ -1,0 +1,58 @@
+baseurl = "https://memoex.github.io"
+DefaultContentLanguage = "en"
+title = "Mr.Blue's notes"
+theme = "beautifulhugo"
+metaDataFormat = "yaml"
+pygmentsUseClasses = true
+pygmentCodeFences = true
+disqusShortname = "silverhugh"
+#googleAnalytics = "XXX"
+
+[Params]
+  subtitle = "Mr.Blue doesn't have a good memory."
+  logo = "img/avatar-icon.png"
+  favicon = "img/favicon.ico"
+  dateFormat = "January 1, 2017"
+  commit = false
+  rss = true
+  comments = true
+#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+
+[Author]
+  name = "Mr. Blue"
+  website = "https://memoex.github.io"
+  email = "silverhugh.77@gmail.com"
+  facebook = ""
+  googleplus = "" # or xxxxxxxxxxxxxxxxxxxxx
+  github = "xiaoshatong"
+  #gitlab = "username"
+  #twitter = "username"
+  #reddit = "username"
+  #linkedin = "username"
+  #xing = "username"
+  #stackoverflow = "users/XXXXXXX/username"
+  #snapchat = "username"
+  #instagram = "username"
+  #youtube = "user/username" # or channel/channelname
+  #soundcloud = "username"
+  #spotify = "username"
+  #bandcamp = "username"
+  #itchio = "username"
+  #vk = "username"
+  #paypal = "username"
+  #telegram = "username"
+
+[[menu.main]]
+    name = "Blog"
+    url = ""
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "page/about/"
+    weight = 3
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 3
