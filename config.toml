@@ -12,7 +12,6 @@ disqusShortname = "silverhugh"
   subtitle = "Mr.Blue doesn't have a good memory."
   logo = "img/avatar-icon.png"
   favicon = "img/favicon.ico"
-  dateFormat = "January 1, 2017"
   commit = false
   rss = true
   comments = true
@@ -48,6 +47,11 @@ disqusShortname = "silverhugh"
     weight = 1
 
 [[menu.main]]
+    name = "Note"
+    url = "note/"
+    weight = 2
+
+[[menu.main]]
     name = "About"
     url = "page/about/"
     weight = 3
@@ -55,4 +59,4 @@ disqusShortname = "silverhugh"
 [[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 3
+    weight = 2
