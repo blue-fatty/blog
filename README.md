@@ -17,3 +17,4 @@ In this way, I create two separate repos.
 ## Update
 
 - 2017-12-03 Using beautifulhugo as theme temporarily.
+- 2017-12-11 Using blue as theme.
