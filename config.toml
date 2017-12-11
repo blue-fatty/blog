@@ -1,7 +1,7 @@
 baseurl = "https://memoex.github.io"
 DefaultContentLanguage = "en"
 title = "Mr.Blue's notes"
-theme = "beautifulhugo"
+theme = "blue"
 metaDataFormat = "yaml"
 pygmentsUseClasses = true
 pygmentCodeFences = true
