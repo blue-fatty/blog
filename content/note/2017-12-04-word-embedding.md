@@ -7,8 +7,6 @@ date: 2017-12-04
 
 在使用Keras的Embedding层的时候，遇到困惑，学习一下。
 
-<!--more-->
-
 ## 拟合目标
 
 条件概率：
@@ -23,6 +21,7 @@ $$log \frac{P(w_i,w_j)}{P(w_i)P(w_j)}$$
 如果两个词语义无关，分布独立，互信息为0：
 $$P(w_j,w_i) \approx P(w_i)P(w_j) \to \frac{P(w_i,w_j)}{P(w_i)P(w_j)} \approx 1 \to log \frac{P(w_i,w_j)}{P(w_i)P(w_j)}$$
 
+<!--more-->
 
 ## 参考
 
