@@ -1,4 +1,4 @@
-baseurl = "https://memoex.github.io"
+baseurl = "https://memoex.github.io/"
 DefaultContentLanguage = "en"
 title = "Mr.Blue's notes"
 theme = "blue"
