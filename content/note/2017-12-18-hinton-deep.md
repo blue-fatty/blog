@@ -98,6 +98,72 @@ Hinton seems have a biological background.
     - 传送的化学分子扩散到突触间隙，与突触后神经细胞膜上的受体分子结合，来改变它们的形状
         - 打开了特定的进或者出的离子通道
 - synapses adapt
+    - effectiveness
+        - number of veicles of transmitter
+        - number of receptor molecules
+    - slow, over RAM
+        - low power
+        - using locally avaailable signals
+            - rules of changing ?
+- \\(10^{11}\\) neurons each with about \\(1^4\\) weights
+- modularity
+    - early brain damage makes functions relocate
+    - cortex 皮质
+        - general purpose, turn into special prupose in response to experience
+            - parallel, flexibility
+- Idealized neurons
+    - Linear: \\(y=b+ \sum\_{i}x_i w_i\\)
+    - Binary threshold neurons
+        - \\(z=b+ \sum\_{i}x_i w_i\\)
+        - \\(y=\begin{cases}1 & \text{if} \quad z \ge 0 \\\\\\ 0 & \text{otherwise} \end{cases}\\)
+    - Rectified Linear Neurons
+        - \\(z=b+ \sum\_{i}x_i w_i\\)
+        - \\(y=\begin{cases}z & \text{if} \quad z \ge 0 \\\\\\ 0 & \text{otherwise} \end{cases}\\)
+    - Sigmoid neurons
+        - \\(z=b+ \sum\_{i}x_i w_i\\)
+        - \\(y=\frac{1}{1+e^{-z}}\\)
+    - Stochastic binary neurons
+        - \\(z=b+ \sum\_{i}x_i w_i\\)
+        - \\(y=\frac{1}{1+e^{-z}}\\)
+        - same but treat output as **probability**
+
+### 1d. A simple example of learning
+
+- display weights
+- Why simple algorithm is insufficient
+    - equivalent to a rigid template, biggest overlap with the ink
+    - we need to learn features
+
+### 1e. Three types of learning
+
+- Supervised learning
+    - Learn to predict an output when given an input vector
+    - Two types
+        - Regression, target is real number or a vector of real numbers
+        - Classifcation, target output is a class label
+    - How
+        - \\(y=f(x; W)\\)
+        - descrepancy 差异
+            - regression: \\( \frac{1}{2}(y-t)^2\\)
+- Reinforcement learning
+    - Learn to select an action to maximize payoff
+    - output: an action or sequence of actions
+    - reward: occasional sclar is the only supervisory signal
+    - goal: selecting each action to maximize the sum of the future rewards
+    - discount factor for delayed rewards
+    - difficult
+        - rewards are delayed, when went wrong ?
+        - scalar reward does not give too much information
+- Unsupervised learning
+    - Discover a good internal representation of the input
+    - ignored for about 40 years
+        - many thought clustering was the only form
+    - hard to say the prupose
+        - one major aim is internal representation of the input
+        - You can compute the distance to a surface by using the disparity between two images. But you don’t want to learn to compute disparities by stubbing your toe thousands of times.?
+        - compress, PCA
+        - find sensible clusters in the input
+
 
 ## The Perceptron learning procedure
 
