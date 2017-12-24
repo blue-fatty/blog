@@ -167,4 +167,7 @@ Hinton seems have a biological background.
 
 ## The Perceptron learning procedure
 
+
+### 2a. An overview of the main types of neural network architecture
+
 ## References

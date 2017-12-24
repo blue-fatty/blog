@@ -2,7 +2,7 @@
 title: "Forward Learning"
 date: 2017-12-18T19:01:49+08:00
 slug: forward
-tags: ['deep learning', 'CNN', 'OBV']
+tags: ['deep learning', 'CNN', 'OBV', 'ELM']
 ---
 
 Papers read during research **forward deep learning** algorithm.
@@ -83,6 +83,27 @@ $$
 - We can use these four vectors to represent 1, 2, 3, 4
 
 [^1]: Improved MLP Learning via Orthogonal Bipolar Target Vectors
+
+## ELM
+
+### Batch mode ELM
+
+**Batch ELM Algorithm** [^os-elm]
+
+$$
+\begin{aligned}
+& \text{Given a training set $\mathcal{\aleph} = \\\{(\mathbf x_i, \mathbf t_i) | \mathbf x_i \in \mathbf R^n, \mathbf t_i \in \mathbf R^m, i=1, ...,N\\\}$,} \\\\\\
+& \qquad \text{activation function $g$ or kernel function $\phi$ } \\\\\\
+& \qquad \text{and hidden neuron or kernel number $\tilde{N}$}  \\\\\\
+\\\\\\
+& step 1. \quad \text{Assign arbitrary input weight $\mathbf{w}_i$ and bias $b_i$ or} \\\\\\
+& \qquad \text{center $\mu_i$ and impact width $\sigma_i,i=1,\cdots,\tilde N$.} \\\\\\
+& step 2. \quad\text{Calculate the hidden layer output matrix $\mathbf H$} \\\\\\
+& step3. \quad\text{Estimate the output weight $\beta: \hat \beta = \mathbf H^\dagger \mathbf T$}
+\end{aligned}
+$$
+
+[^os-elm]: On-Line Sequential Extreme Learning Machine
 
 ## References
 
