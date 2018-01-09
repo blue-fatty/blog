@@ -7,7 +7,10 @@ Notes about using Tensorflow
 
 ## Quick notes
 
-- trainable: If `True`, the default, also adds the variable to the graph collection `GraphKeys.TRAINABLE_VARIABLES`. This collection is used as the default list of variables to use by the `Optimizer` classes.
+trainable: If `True`, the default, also adds the variable to the graph collection `GraphKeys.TRAINABLE_VARIABLES`. This collection is used as the default list of variables to use by the `Optimizer` classes.
+
+- `tf.reset_default_graph()`
+- `writer = tf.summary.FileWriter('<path>', sess.graph)`
 
 <!--more-->
 
