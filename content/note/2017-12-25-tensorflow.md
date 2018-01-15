@@ -1,6 +1,7 @@
 ---
 title: "Tensorflow"
 date: 2017-12-25T14:46:16+08:00
+slug: tensorflow
 ---
 
 Notes about using Tensorflow
@@ -9,8 +10,33 @@ Notes about using Tensorflow
 
 trainable: If `True`, the default, also adds the variable to the graph collection `GraphKeys.TRAINABLE_VARIABLES`. This collection is used as the default list of variables to use by the `Optimizer` classes.
 
-- `tf.reset_default_graph()`
-- `writer = tf.summary.FileWriter('<path>', sess.graph)`
+**Tensorflow gpu auto growth**
+
+``` py
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+```
+
+**Reset default graph**
+
+`tf.reset_default_graph()`
+
+**Tensorboard**
+
+``` py
+with tf.Session(config=config) as sess:
+
+    # ...
+
+    writer = tf.summary.FileWriter('./graphs/test', sess.graph)
+    writer.flush()
+    writer.close()
+```
+
+Startup tensorboard:
+
+`tensorboasrd --logdir="<path>" --port 6006 --reload_interval=5`
+
 
 <!--more-->
 
