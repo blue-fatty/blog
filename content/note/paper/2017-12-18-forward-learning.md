@@ -7,6 +7,17 @@ tags: ['deep learning', 'CNN', 'OBV', 'ELM']
 
 Papers read during research **forward deep learning** algorithm.
 
+## Quick notes
+
+- 正推，逆推
+    - 底层精度高=> 高层精度高
+    - 相同结构网络，精度高的网络，从中间截取进行分类是否精度也高？
+- 不同粒度特征提取的结合
+    - 粒度，卷积层数？ 层数不同的实质是什么不同？
+- 在调整了一些Hyper-paramenter后，大致上可以发现影响更大的参数，比如卷积核数
+    - 调整优先级：欠拟合 > 过拟合
+- 用CIFAR-10训练时，测试集上的loss会在某次迭代中突然丢失，然后又恢复，形成一个尖刺？
+
 ## Orthogonal Bipolar Target Vectors[^1]
 
 **Can OBV construct a middle target for CNN?**
