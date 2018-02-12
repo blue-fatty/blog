@@ -17,6 +17,7 @@ Papers read during research **forward deep learning** algorithm.
 - 在调整了一些Hyper-paramenter后，大致上可以发现影响更大的参数，比如卷积核数
     - 调整优先级：欠拟合 > 过拟合
 - 用CIFAR-10训练时，测试集上的loss会在某次迭代中突然丢失，然后又恢复，形成一个尖刺？
+- 将问题分割成子问题，但试图用深度学习解决的问题，都不太好分割成子问题
 
 ## Orthogonal Bipolar Target Vectors[^1]
 

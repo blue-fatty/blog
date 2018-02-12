@@ -116,6 +116,28 @@ with tf.Session() as sess:
 '''
 ```
 
+### Tensorboard
+
+``` py
+tf.summary.scalar('accuracy', accuracy) # accuracy is a Tensor
+summary_op = tf.summary.merge_all()
+summary = sess.run(summary_op)
+writer = tf.summary.FileWriter('/graphs/sub_path', graph=sess.graph)
+writer.add_summary(summary, epoch) # epoch is an integer
+```
+
+The best practice is use different `sub_path` name for different training. So we can compare one spercific metric of each training in one grapph.
+
+For example, using:
+
+``` py
+from datetime import datetime
+def get_log_path(model_name):
+    t = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    return './graphs/' + model_name + '-' + t
+```
+
+
 ## CS 20SI: Tensorflow for Deep Learning Research
 
 ### 1. Overview of Tensorflow
