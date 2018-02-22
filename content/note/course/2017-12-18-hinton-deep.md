@@ -1,5 +1,5 @@
 ---
-title: "Hinton - Neural Networks for Machine Learning"
+title: "Hinton Course"
 date: 2017-12-18T09:32:46+08:00
 slug: hinton
 tags: ["deep learning"]
