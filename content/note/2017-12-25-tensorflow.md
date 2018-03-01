@@ -116,6 +116,8 @@ with tf.Session() as sess:
 '''
 ```
 
+---
+
 ### Tensorboard
 
 ``` py
@@ -137,61 +139,31 @@ def get_log_path(model_name):
     return './graphs/' + model_name + '-' + t
 ```
 
+---
 
-## CS 20SI: Tensorflow for Deep Learning Research
+### Padding mode
 
-### 1. Overview of Tensorflow
+[What is the difference between 'SAME' and 'VALID' padding in tf.nn.max_pool of tensorflow?](https://stackoverflow.com/a/39371113)
 
-- Why TensorFlow ?
-    - Python API
-    - Portability: deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device with a single API
-    - Flexibility: from Raspberry Pi, Android, Windows, iOS, Linux to server farms
-    - Visualization (TensorBoard is da bomb)
-    - Checkpoints (for managing experiments)
-    - Auto-differentiation autodiff (no more taking derivatives by hand. Yay)
-    - Large community (> 10,000 commits and > 3000 TF-related repos in 1 year)
-    - Awesome projects already using TensorFlow
-- Simplified TensorFlow ?
-    - TF Learn (tf.contrib.learn): simplified interface that helps users transition from the the world of one-liner such as scikit-learn
-    - TF Slim (tf.contrib.slim): lightweight library for defining, training and evaluating complex models in TensorFlow.
-    - High level API: Keras, TFLearn, Pretty Tensor
-- Tensor
-    - An n-dimensional array
-- Session
-    - A Session object encapsulates the environment in which Operation objects are executed, and Tensor objects are evaluated.
-- No more than one graph, use subgraph
-    - Multiple graphs require multiple sessions, each will try to use all available resources by default
-    - Can't pass data between them without passing them through python/numpy, which doesn't work in distributed
-    - It’s better to have disconnected subgraphs within one graph
-- Why graphs
-    - **Save computation** (only run subgraphs that lead to the values you want to fetch)
-    - Break computation into small, differential pieces to **facilitates auto-differentiation**
-    - **Facilitate distributed computation**, spread the work across multiple CPUs, GPUs, or devices
-    - Many common machine learning models are commonly taught and visualized as directed graphs already
+- Input width = 13
+- Filter width = 6
+- Stride = 5
 
-### 2. TensorFlow Ops
-
-**Tensorboard**
+`padding='valid'`:
 
 ``` py
-import tensorflow as tf
-
-a = tf.constant(2, name="a")
-b = tf.constant(3, name="b")
-x = tf.add(a, b, name="add")
-
-with tf.Session() as sess:
-
-    writer = tf.summary.FileWriter("./graphs", sess.graph)
-    print sess.run(x)
+inputs:         1  2  3  4  5  6  7  8  9  10 11 (12 13)
+              |________________|                dropped
+                             |_________________|
 ```
 
-In shell:
+`padding='same'`:
 
-``` sh
-tensorboard --logdir="./graphs" --port 6006
+``` py
+           pad|                                      |pad
+inputs:      0 |1  2  3  4  5  6  7  8  9  10 11 12 13|0  0
+           |________________|
+                          |_________________|
+                                         |________________|
 ```
-
-Then open your browser and go to `http://localhost:6006/`
-
 
