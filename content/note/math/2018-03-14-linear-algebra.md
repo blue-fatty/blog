@@ -1,17 +1,16 @@
 ---
-title: "Math"
-date: 2017-12-06T11:58:54+08:00
-slug: math
-tags: ["linear algebra"]
+title: "Linear Algebra"
+date: 2018-03-14T15:47:18+08:00
+slug: la
+group: math
+weight: 6
 ---
 
-记录一些数学知识。
+Linear Algebra notes.
 
-## 线性代数
+## Matrix multiplication
 
-### 矩阵乘法
-
-#### 矩阵乘法的由来
+### The origin of matrix multiplication
 
 **参考：[数学家最初发明行列式和矩阵是为了解决什么问题？ - 马同学的回答 - 知乎](https://www.zhihu.com/question/19919917/answer/270694029)**
 
@@ -104,46 +103,30 @@ $$
  \end{pmatrix}
  \begin{pmatrix}
  1 & 2 & 3 \\
- 3 & 4 & 5 
+ 3 & 4 & 5
  \end{pmatrix} =
  \begin{pmatrix}
  1 & 0 & -1 \\
- 0 & 1 & 2 
- \end{pmatrix} 
+ 0 & 1 & 2
+ \end{pmatrix}
 $$
 
 </div>
 
-#### 矩阵乘法的理解
+## PCA
 
-**几个概念**
+### Compute with Python
 
-- 内积
+- [Principal Component Analysis in Python](https://plot.ly/ipython-notebooks/principal-component-analysis/)
 
+<!-- Linear Algebra Done right -->
 
-### 特征值和特征向量
+## Properties of complex arithmetic
 
-<dev>
-$$ A \mathbf{x} = \lambda \mathbf{x}$$
-</dev>
-
-But why this?
-
-一些阅读材料：
-
-- [如何理解矩阵特征值？ - 马同学的回答 - 知乎](https://www.zhihu.com/question/21874816/answer/181864044)
-
-## Quick notes
-
-### 梯度
-
-沿梯度方向\\(\nabla f \text{,} \\  f\\)增长最快。\\(\nabla\\), nabla ['næblə]
-
-### 不可逆矩阵
-
-什么样的矩阵不可逆？
-
-- 矩阵满秩
-- 当且仅当行列式值为零
-- 导致降维的矩阵，[那些矩阵不可逆？举例子？ - gamemode 3的回答 - 知乎](https://www.zhihu.com/question/54097090/answer/250453837)
+1. **commutativity (交换性)**: <br>\\(\alpha + \beta = \beta = \alpha \ \text{and} \ \alpha\beta = \beta\alpha \ \text{for all} \ \alpha,\beta \in \mathbf{C}\\)
+1. **associativity (结合性)**: <br>\\((\alpha + \beta)+\lambda = \alpha + (\beta + \lambda) \ \text{and} \ (\alpha\beta)\lambda = \alpha(\beta\lambda) \ \text{for all} \ \alpha, \beta, \lambda \in \mathbf{C} \\)
+1. **identities (单位元)**: <br>\\(\lambda + 0 = \lambda \ \text{and} \ \lambda 1 = \lambda \ \text{for all} \ \lambda \in \mathbf{C} \\)
+1. **additive inverse (加法逆元)**: <br>\\(\text{for every } \alpha \in \mathbf{C}, \ \text{there exists a unique } \beta \in \mathbf{C} \ \text{such that} \alpha + \beta = 0\\)
+1. **multiplicative inverse (乘法逆元)**: <br>\\(\text{for every } \alpha \in \mathbf{C}, \ \text{with } \alpha \ne 0, \ \text{there exists a unique } \beta \in \textbf{C} \text{ such that } \alpha \beta = 1 \\)
+1. **distributive property (分配性)**: <br>\\(\lambda (\alpha + \beta) = \lambda \alpha + \lambda \beta \ \text{for all} \ \alpha,\beta \in \mathbf{C}\\)
 

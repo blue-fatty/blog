@@ -2,7 +2,13 @@
 title: "Data Augmentation"
 date: 2018-03-08T22:06:06+08:00
 slug: augmentation
+post: true
+group: deep
+weight: 2
 ---
+
+Data augmentation is the process of increasing the size of a dataset by transforming it
+in ways that a neural network is unlikely to learn by itself.
 
 After reanding this post, you will know:
 
@@ -39,12 +45,12 @@ from keras.datasets import cifar10
 import matplotlib.pyplot as plt
 import numpy as np
 from numpy import linalg as la
+from sklearn.decomposition import PCA
 
 from imgaug import augmenters as iaa
 import imgaug as ia
 
 %matplotlib inline
-
 (X_train, y_train), (X_test, y_test) = cifar10.load_data()
 X_train = X_train.astype('float32')
 y_train = y_train.astype('float32')
@@ -71,6 +77,12 @@ show9(imgs)
 Code for this:
 
 ``` py
+# simplify code
+def show_img_augs(imgs, imgaug_seq):
+    ia.seed(1)
+    imgs_aug = seq.augment_images(imgs)
+    show9(imgs_aug)
+
 seq = iaa.Sequential([
     iaa.Crop(percent = (0, 0.3))
 ])
@@ -105,7 +117,7 @@ show_img_augs(imgs, seq)
 
 ### flipping
 
-Also called as reflection.
+Also called as reflection or mirroring.
 
 {{< img "https://i.imgur.com/UoyJQ3D.png" "images with horizontal flipping" >}}
 
@@ -144,6 +156,9 @@ show_img_augs(imgs, seq)
 
 ### color jitter
 
+For color jitter, the knowledge of [color space](/note/color/#color-space) may help.
+
+
 #### brightness
 
 {{< img "https://i.imgur.com/9gO6BJa.png" "change the brightness of images" >}}
@@ -172,6 +187,101 @@ show_img_augs(imgs, seq)
 
 #### fancy PCA
 
+Fancy PCA or PCA Color Augmentation is a type of data augmentation technique
+first mentioned in Alex's paper *ImageNet Classification with Deep Convolutional Neural Networks*.
+
+The original words in the paper:
+
+>We perform PCA on the set of RGB pixel values throughout the ImageNet training set.
+>
+**To each training image, we add multiples of the found principal components,
+with magnitudes proportional to the corresponding eigenvalues times a random variable
+drawn from a Gaussian with mean zero and standard deviation 0.1.**
+>
+Therefore **to each RGB image pixel \\(I\_{xy} = [I\_{xy}^R,I\_{xy}^G,I\_{xy}^B]^T\\)
+we add the following quantity:**
+$$
+[p\_1,p\_2,p\_3][\alpha\_1 \lambda_1 , \alpha\_2 \lambda_2 , \alpha\_3 \lambda_3]^T
+$$
+**where \\(p_i\\) and \\(\lambda_i\\) are
+\\(i\\)th eigenvector and eigenvalue of the \\(3 \times 3\\) covariance matrix of RGB pixel vales,
+respectively, and \\(\alpha_i\\) is the aforementioned random variable.**
+>
+Each \\(\alpha_i\\) is drawn only once for all the pixels of a particular training image
+until that image is used for training again,
+at which point it is re-drawn. This scheme aproximately captures an important property of natural images,
+namely, that object identity is invariant to changes in the intensity and color of illuminiation.
+This scheme reduces the top-1 error rate by over 1%.
+
+So the whole steps of fancy PCA is:
+
+1. Resize data's shape into `(n * width * height, 3)`
+1. Standardize data into unit scale ( mean=0, variance=1 )
+1. Compute the eigen values and eigen vectors.
+    - Decomposition of covariance matrix
+    - Decomposition of correlation matrix
+    - Use skit-learn's tool
+1. Image augmentation
+
+Code for this:
+
+``` py
+# 1. Resize
+res = np.array([]).reshape([0,3])
+for img in imgs:
+    img = img / 255.
+    arr = img.reshape(img.shape[0]*img.shape[1], 3)
+    res = np.vstack([res, arr])
+
+# 2. Standardize
+mean = res.mean(axis=0)
+std = res.std(axis=0)
+res_std = (res - mean) / std
+
+# 3. Eigendecomposition
+pca = PCA()
+rgb_pca = pca.fit(res_std)
+eigen_values = rgb_pca.explained_variance_
+eigen_vectors = rgb_pca.components_.T
+print 'Eigen Values \n%s' % eigen_values
+print 'Eigen Vectors \n%s' % eigen_vectors
+
+# 4. Image augmentation
+def data_aug(img, eig_vals, eig_vecs):
+
+    if len(eig_vals.shape) == 1:
+        eig_vals = eig_vals[np.newaxis, :]
+
+    mu = 0
+    sigma = 0.1
+
+    # 3 x 1 scaled eigenvalue matrix
+    w = np.random.normal(mu, sigma, (1,3)) * eig_vals
+    noise = eig_vecs.dot(w.T).reshape([1,1,3])
+
+    # perturbe the image
+    img_aug = img + noise
+
+    return img_aug
+
+def data_augs(imgs, eig_vals, eig_vecs):
+
+    img_augs = imgs.copy()
+
+    for i in xrange(img_augs.shape[0]):
+        img_augs[i] = data_aug(img_augs[i], eig_vals, eig_vecs)
+
+    return img_augs
+
+img_augs = data_augs(imgs/255., eigen_values, eigen_vectors)
+show9(img_augs)
+```
+
+The entire code in notebook is [here](https://nbviewer.jupyter.org/github/blue-fatty/notebooks/blob/master/scripts/keras-image-augmentation.ipynb)
+or you can find it in my [notebooks repo](https://github.com/blue-fatty/notebooks).
+
+See also: [Fancy PCA (Data Augmentation) with Scikit-Image](https://deshanadesai.github.io/notes/Fancy-PCA-with-Scikit-Image)
+
 ### salt and pepper
 
 Add salt (white points) and pepper (black points) to images.
@@ -187,6 +297,19 @@ seq = iaa.Sequential([
 show_img_augs(imgs, seq)
 ```
 
+### distortion
+
+{{< img "https://i.imgur.com/874Tjkp.png" "images with distortion" >}}
+
+Code for this:
+
+``` py
+seq = iaa.Sequential([
+    iaa.PiecewiseAffine(scale=(0.01, 0.07))
+])
+show_img_augs(imgs, seq)
+```
+---
 
 You can read [REDME.md of imgaug](https://github.com/aleju/imgaug) for more augmentation methods.
 
@@ -223,9 +346,10 @@ for batch_idx in range(1000):
     train_on_images(images_aug)
 ```
 
-### Links
+#### Links
 
 - [Github homepage of imgaug](https://github.com/aleju/imgaug)
 - [Brief and complex Examples](http://imgaug.readthedocs.io/en/latest/source/examples_basics.html)
 - [Quick reference](http://imgaug.readthedocs.io/en/latest/source/augmenters.html)
 
+### 

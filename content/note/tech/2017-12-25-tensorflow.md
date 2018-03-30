@@ -2,6 +2,7 @@
 title: "Tensorflow"
 date: 2017-12-25T14:46:16+08:00
 slug: tensorflow
+weight: 8
 ---
 
 Notes about using Tensorflow
