@@ -3,7 +3,7 @@ title: "Loss Function"
 date: 2018-03-19T19:44:24+08:00
 slug: loss
 group: deep
-weight: 2
+weight: 4
 ---
 
 This article will introdcue:
@@ -162,7 +162,7 @@ $$
 f(x) = \ln \frac{e^{x}+e^{-x}}2
 $$
 
-(It seems writing \\(ln\\) here is more comfortable.)
+(It seems writing \\(\ln\\) here is more comfortable.)
 
 And its graph looks like this:
 

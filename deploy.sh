@@ -22,3 +22,6 @@ git push origin master
 
 # Come Back up to the Project Root
 cd ..
+
+t=`date "+%Y-%m-%d %H:%M:%S"`
+echo "Deployment finished on: $t"

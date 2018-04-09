@@ -1,4 +1,4 @@
 ---
 title: "Math"
-redirect: "/note/math/math"
+weight: 2
 ---

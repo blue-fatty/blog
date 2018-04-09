@@ -1,4 +1,4 @@
 ---
 title: "Tech"
-redirect: "/note/tech/python"
+weight: 1
 ---
