@@ -5,7 +5,7 @@ slug: optimization
 weight: 8
 ---
 
-This article will first introduce gradient descent, and then go through most of common optimization methods, such as:
+This article will first introduce gradient descent, and then go through most of popular optimization methods, such as:
 
 - SGD
 - RMSprop
