@@ -3,49 +3,20 @@ DefaultContentLanguage = "en"
 title = "Mr.Blue"
 theme = "blue"
 metaDataFormat = "yaml"
-pygmentsUseClasses = true
-pygmentCodeFences = true
-disqusShortname = "silverhugh"
-#googleAnalytics = "XXX"
+enableGitInfo = true
 
 [Params]
   subtitle = "Mr.Blue doesn't have a good memory."
-  logo = "img/avatar-icon.png"
-  favicon = "img/favicon.ico"
-  commit = false
-  rss = true
-  comments = true
-#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+  favicon = "favicon.ico"
+  sidebar = ["note", "leetcode"]
+  comment = true
+  disqus = "silverhugh"
 
 [Author]
-  name = "Mr. Blue"
+  name = "Mr.Blue"
   website = "https://memoex.github.io"
   email = "silverhugh.77@gmail.com"
-  facebook = ""
-  googleplus = "" # or xxxxxxxxxxxxxxxxxxxxx
   github = "blue-fatty"
-  #gitlab = "username"
-  #twitter = "username"
-  #reddit = "username"
-  #linkedin = "username"
-  #xing = "username"
-  #stackoverflow = "users/XXXXXXX/username"
-  #snapchat = "username"
-  #instagram = "username"
-  #youtube = "user/username" # or channel/channelname
-  #soundcloud = "username"
-  #spotify = "username"
-  #bandcamp = "username"
-  #itchio = "username"
-  #vk = "username"
-  #paypal = "username"
-  #telegram = "username"
-
-[[menu.main]]
-    identifier = "post"
-    name = "Post"
-    url = "/"
-    weight = 1
 
 [[menu.main]]
     identifier = "note"
@@ -54,7 +25,19 @@ disqusShortname = "silverhugh"
     weight = 2
 
 [[menu.main]]
+    identifier = "project"
+    name = "Project"
+    url = "/project/"
+    weight = 2
+
+[[menu.main]]
     identifier = "tags"
     name = "Tags"
     url = "/tags/"
     weight = 2
+
+[[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3

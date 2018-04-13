@@ -3,7 +3,6 @@
 ---
 title: "{{ $title }}"
 date: {{ .Date }}
-draft: true
 slug: {{ $slug }}
 ---
 

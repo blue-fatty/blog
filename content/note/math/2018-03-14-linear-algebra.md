@@ -3,7 +3,7 @@ title: "Linear Algebra"
 date: 2018-03-14T15:47:18+08:00
 slug: la
 group: math
-weight: 6
+weight: 3
 ---
 
 Linear Algebra notes.
