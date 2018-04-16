@@ -8,6 +8,8 @@ weight: 3
 
 Linear Algebra notes.
 
+<!--more-->
+
 ## Matrix multiplication
 
 ### The origin of matrix multiplication
@@ -32,8 +34,6 @@ $$
 \end{cases}
 $$
 </div>
-
-<!--more-->
 
 **演变过程：**
 
