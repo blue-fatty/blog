@@ -7,6 +7,7 @@ hugo --enableGitInfo # if using a theme, replace with `hugo -t <YOURTHEME>`
 
 # Commit your website's changes before deployment
 git commit -am ":memo: update blog"
+git push origin master
 
 # Go To Public folder
 cd public
